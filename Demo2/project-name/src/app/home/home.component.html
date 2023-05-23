@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <style>
+    /* Add some basic styling to the navbar */
+    
+    ul.navbar {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+    }
+
+    ul.navbar li {
+      flex-grow: 1;
+    }
+
+    ul.navbar li a {
+      display: block;
+      color: pink;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    ul.navbar li a:hover {
+      background-color: #111;
+    }
+    .dropdown-content {
+      display: none;
+      position: fixed;
+      background-color: purple;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .container1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+h1 {
+  margin-left: 10px; 
+}
+.container2 {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+  background-color: pink;
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  width: 220px; /* Adjust the size as needed */
+  height: auto;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.dog-image {
+  left: -200px; /* Initial position off-screen to the left */
+  animation-name: dogAnimation;
+ 
+}
+
+.cat-image {
+  right: -200px; /* Initial position off-screen to the right */
+  animation-name: catAnimation;
+ 
+}
+
+.message {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px; /* Adjust the font size as needed */
+  opacity: 0;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-name: messageAnimation;
+  font-style: oblique;
+}
+
+@keyframes dogAnimation {
+  0% {
+    transform: translateX(0%); /* Start position */
+  }
+  65% {
+    transform: translateX(calc(50% + 220px)); /* Scroll to the right end */
+  }
+  70% {
+    transform: translateX(calc(50% + 220px)) translateY(-100px); /* Jump up */
+  }
+  70% {
+    transform: translateX(calc(50% + 220px)) translateY(-50px); /* Jump down */
+  }
+  100% {
+    transform: translateX(calc(50% + 220px)) translateY(-50px); /* Final position at the right corner */
+  }
+}
+
+@keyframes catAnimation {
+  0% {
+    transform: translateX(0%); /* Start position */
+  }
+  65% {
+    transform: translateX(calc(-50% - 220px)); /* Scroll to the left end */
+  }
+  70% {
+    transform: translateX(calc(-50% - 220px)) translateY(-100px); /* Jump up */
+  }
+  70% {
+    transform: translateX(calc(-50% - 220px)) translateY(-50px); /* Jump down */
+  }
+  100% {
+    transform: translateX(calc(-50% - 220px)) translateY(-50px); /* Final position at the left corner */
+  }
+}
+
+@keyframes messageAnimation {
+  0% {
+    opacity: 0; /* Hide the message initially */
+  }
+  100% {
+    opacity: 1; /* Show the message after the animation */
+  }
+}
+  </style>
+</head>
+<body>
+    <div class="container1">
+        <img src="https://media.istockphoto.com/id/1186734274/vector/vector-image-of-dog-and-cat-logo-on-white.jpg?s=170667a&w=0&k=20&c=HLwkvF-jEr2MxjRnaOdvWw6uCHsZ3NWiC7wSyyMU4fE="
+          alt="Heads and Tails Logo" width="100px" height="100px">
+        <h1>HEADS AND TAILS</h1>
+      </div>
+  <ul class="navbar">
+    <li><a href="#">Home</a></li>
+    <li class="dropdown">
+        <a href="#" class="dropbtn">Breed</a>
+        <div class="dropdown-content">
+          <a href="#">Dog</a>
+          <a href="#">Cat</a>
+        </div>
+      </li>
+    
+    <li><a href="#">Veterinarian</a></li>
+    <li class="dropdown"><a href="#" class="dropbtn">Adoption</a>
+      <div class="dropdown-content">
+        <a href="#">Dog</a>
+        <a href="#">Cat</a>
+      </div>
+    </li>
+    <li><a href="#">Reviews</a></li>
+    <li class="dropdown">
+      <a href="#"><img src="https://i.pinimg.com/564x/12/0c/db/120cdbb156b59eea88d9d213c08f9184.jpg" 
+        width="30px" height="30px"></a>
+        <div class="dropdown-content">
+          <li class="nav-item">
+            <a class="nav-link"   routerLink="login"> Login </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="breed"> Pets </a>
+          </li>
+          
+         
+          <a href="#">New Customer? SignIn</a>
+          <a href="#">LogOut</a>
+        </div>
+    </li>
+  </ul>
+  <div class="container2">
+    <img class="image dog-image" src="https://i.redd.it/c6uvi100gl061.jpg"
+      alt="Dog" width="220px" height="200px">
+    <img class="image cat-image" src="https://i.redd.it/u0nt0cy917r21.jpg"
+      alt="Cat" width="220px" height="200px">
+    <div class="message">
+        <p>HI!</p>
+       <p>FALL IN LOVE WITH A PET.</p>
+       <p>YOUR NEW FAMILY MEMBER AWAITS YOU.</p>
+    </div>
+  </div>
+  
+    <!-- <div class="slideshow">
+      <input type="radio" name="slideshow" id="slide1" checked>
+      <input type="radio" name="slideshow" id="slide2" >
+      <input type="radio" name="slideshow" id="slide3" >
+      
+      <div class="slides">
+        <div class="slide">
+          <img src="https://americanlifestylemag.com/wp-content/uploads/2017/12/dogs-make-lives-whole-intext.jpg" alt="Image 1">
+        </div>
+        <div class="slide">
+          <img src="https://i.pinimg.com/originals/2c/58/83/2c5883ca4e0dc630036a0e4dbffa2ad4.jpg" alt="Image 2">
+        </div>
+        <div class="slide">
+          <img src="https://condolencemessages.com/wp-content/uploads/2020/04/PT-02-Dog-1024x572.jpg" alt="Image 3">
+        </div>
+      </div>
+      </div>
+      
+      <div class="slide-navigation">
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+      </div>
+    -->
+    
+  
+</body>
+</html>
+  
+

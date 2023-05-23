@@ -1,0 +1,205 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+<section>
+
+<div class="container">
+    <div class="title">CUSTOMER REGISTRATION</div>
+    <div class="content">
+        
+    <form #regForm="ngForm" (ngSubmit)="register(regForm.value)" novalidate>
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input class="form-control" type="text" name="custId" ngModel #custId="ngModel" placeholder="Enter Your Id"
+            minlength="1" maxlength="4"  required />
+        </div><br />
+
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="	glyphicon glyphicon-pencil"></i></span>
+            <input class="form-control" type="text" name="custName" ngModel #custName="ngModel"
+                placeholder="Enter Your Name" required />
+        </div><br />
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+            <select class="form-control" name="country" ngModel #country="ngModel" required>
+                <option value=""> Select Country </option>
+                <option value="{{country.cca3}}" *ngFor="let country of countries"> {{country.name.common}} </option>
+            </select>
+        </div><br />
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="	glyphicon glyphicon-home"></i></span>
+            <input class="form-control" type="text" name="address" ngModel #address="ngModel"
+                placeholder="Enter Your Address" required />
+        </div><br />
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class=" glyphicon glyphicon-earphone"></i></span>
+                <input type="text" name=" mobNo" placeholder="Enter your number" ngModel required pattern="[6789][0-9]{9}" class="form-control" style="width: 610px;"/>
+                <div *ngIf="regForm.controls?.[' mobNo']?.errors?.['pattern'] && (regForm.controls?.[' mobNo']?.dirty || regForm.controls?.[' mobNo']?.touched)" class="alert alert-danger">
+                  Please enter a valid mobile number starting with 6,7,8 or 9.
+                </div>
+        </div><br />
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-tower"></i></span>
+            <select class="form-control" name="gender" ngModel #gender="ngModel" required>
+                <option value=""> Select Gender </option>
+                <option value="Male"> Male </option>
+                <option value="Female"> Female </option>
+                <option value="Other"> Other </option>
+            </select>
+        </div>
+        <br />
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input type="email" name="emailId" placeholder="Enter your email" ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" style="width: 610px;" />
+            <div *ngIf="regForm.controls?.['emailId']?.errors?.['pattern'] && (regForm.controls?.['emailId']?.dirty || regForm.controls?.['emailId']?.touched)" class="alert alert-danger">
+              Please enter a valid email address.
+            </div>
+          </div><br/>
+
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" name="password" placeholder="Enter your password" ngModel required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" class="form-control" style="width: 610px;"/>
+            <div *ngIf="regForm.controls?.['password']?.errors?.['pattern'] && (regForm.controls?.['password']?.dirty || regForm.controls?.['password']?.touched)" class="alert alert-danger">
+              Please enter a password with at least 8 characters, one uppercase letter, one lowercase letter, one digit, and one special character.
+            </div>
+          </div><br/>
+
+        <button [disabled]="!regForm.valid" class="btn btn-info"> Register </button>
+    </form>
+
+
+
+</div>   
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <title>register</title>
+</head>
+<body>
+<div class="container">
+
+    <h1 align="center"> Customer Registration </h1> <br/>
+    
+    <form #regForm="ngForm" (ngSubmit)="register(regForm.value)" novalidate>
+        
+            
+          
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input class="form-control" type="text" name="custId" ngModel #custId="ngModel" placeholder="Enter Your Customer Id" required/>
+            </div><br/>
+            
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                <input class="form-control" type="text" name="custName" ngModel #custName="ngModel"  placeholder="Enter Your Name" required  />
+            </div><br/>
+            
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+            <select class="form-control" name="country" ngModel #country="ngModel" required>
+                <option value=""> Select Country </option>
+                <option value="{{country.cca3}}" *ngFor="let country of countries"> {{country.name.common}} </option>
+            </select>
+        </div><br/>
+
+          <div class="input-group">
+             <span class="input-group-addon"><i class="	glyphicon glyphicon-home"></i></span>
+             <input class="form-control" type="text" name="address" ngModel #address="ngModel"  placeholder="Enetr Your Address"required />
+            </div><br/>
+            
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-tower"></i></span>
+            <select class="form-control" name="gender" ngModel #gender="ngModel" required>
+                <option value=""> Select Gender </option>
+                <option value="Male"> Male </option>
+                <option value="Female"> Female </option>
+                <option value="Other"> Other </option>
+            </select>
+            </div>
+            <br/>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                    <input class="form-control" type="text" name="mobNo" ngModel #mobNo="ngModel" placeholder="Enter Your Mobile Number" required  />
+                   </div><br/>
+    
+                   <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <input class="form-control" type="text" name="emailId" ngModel #emailId="ngModel" placeholder="Enter Your EmailId"required  />
+                   </div><br/>
+    
+                   <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input class="form-control" type="text" name="password" ngModel #password="ngModel" placeholder="Enter Your Password" required  />
+                   </div><br/>
+    
+
+
+            
+                <td align="right"> </td>
+                <td align="left"> <button class="btn btn-info"> Register </button> </td>
+            
+        
+        
+    </form>
+    </div>
+</body>
+    </html> -->
